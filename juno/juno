@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# ...
+export ATOM_HOME=$HOME/.juno
+
+# ...
+if ! [ -d ${ATOM_HOME} ]; then
+	echo "Setting up Juno..."
+	juno.apm install uber-juno
+fi
+
+# ...
+exec atom $@

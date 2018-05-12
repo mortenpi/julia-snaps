@@ -1,0 +1,24 @@
+name: juno
+version: git
+summary: Juno IDE scripts for Atom
+description: |
+  Juno IDE scripts for Atom
+icon: juno.png
+
+grade: devel
+confinement: classic
+
+apps:
+  juno:
+    command: bin/juno
+  apm:
+    command: bin/apm
+
+parts:
+  juno:
+    plugin: dump
+    organize:
+      'juno': bin/juno
+      'apm': bin/apm
+      'juno.png': meta/gui/icon.png
+      'juno.desktop': meta/gui/juno.desktop

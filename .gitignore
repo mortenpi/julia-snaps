@@ -1,0 +1,10 @@
+*.snap
+.snapcraft/
+
+julia/parts
+julia/stage
+julia/prime
+
+juno/parts
+juno/stage
+juno/prime

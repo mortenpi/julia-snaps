@@ -1,0 +1,3 @@
+#!/bin/sh
+export ATOM_HOME=$HOME/.juno
+exec apm $@
