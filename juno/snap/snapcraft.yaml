@@ -11,6 +11,7 @@ confinement: classic
 apps:
   juno:
     command: bin/juno
+    desktop: juno.desktop
   apm:
     command: bin/apm
 
@@ -21,4 +22,4 @@ parts:
       'juno': bin/juno
       'apm': bin/apm
       'juno.png': meta/gui/icon.png
-      'juno.desktop': meta/gui/juno.desktop
+      #'juno.desktop': meta/gui/juno.desktop

@@ -4,6 +4,7 @@
 julia/parts
 julia/stage
 julia/prime
+julia/downloads
 
 juno/parts
 juno/stage
