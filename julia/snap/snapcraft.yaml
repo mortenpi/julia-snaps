@@ -1,5 +1,5 @@
 name: julia
-version: 0.6.2
+version: 0.6.4
 summary: The Julia programming language.
 description: |
   Julia is a high-level, high-performance dynamic programming language for
@@ -16,17 +16,19 @@ parts:
   julia:
     plugin: nil
     override-build: |
-      JULIA_TARBALL=julia-0.6.2-linux-x86_64.tar.gz # 0.6.2 contains julia-d386e40c17/
-      DOWNLOADS_DIRECTORY=$SNAPCRAFT_STAGE/../downloads # should be julia/downloads
+      JULIA_URL_BASE="https://julialang-s3.julialang.org/bin/linux/x64/0.6/"
+      JULIA_TARBALL=julia-0.6.4-linux-x86_64.tar.gz
+      JULIA_DIRECTORY=julia-9d11f62bcb # 0.6.4 contains julia-9d11f62bcb/
+      DOWNLOADS_DIRECTORY=${SNAPCRAFT_STAGE}/../downloads # should be julia/downloads
       JULIA_TARBALL_PATH="${DOWNLOADS_DIRECTORY}/${JULIA_TARBALL}"
       mkdir -p "$DOWNLOADS_DIRECTORY"
       if ! [ -f "${JULIA_TARBALL_PATH}" ]; then
-        echo "Downloading Julia tarball into ${$DOWNLOADS_DIRECTORY}"
-        wget https://julialang-s3.julialang.org/bin/linux/x64/0.6/${JULIA_TARBALL} -O ${JULIA_TARBALL_PATH}
+        echo "Downloading Julia tarball into ${DOWNLOADS_DIRECTORY}"
+        wget ${JULIA_URL_BASE}${JULIA_TARBALL} -O ${JULIA_TARBALL_PATH}
       else
         echo "Reusing ${JULIA_TARBALL_PATH}"
       fi
       echo "Unpacking ${JULIA_TARBALL_PATH}\n into `pwd`"
       tar -xf ${JULIA_TARBALL_PATH}
-      mv julia-d386e40c17/* $SNAPCRAFT_PART_INSTALL/
-      rmdir julia-d386e40c17/
+      mv ${JULIA_DIRECTORY}/* $SNAPCRAFT_PART_INSTALL/
+      rmdir ${JULIA_DIRECTORY}/
